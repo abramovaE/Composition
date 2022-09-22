@@ -1,7 +1,8 @@
-package ru.kotofeya.composition
+package ru.kotofeya.composition.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ru.kotofeya.composition.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
