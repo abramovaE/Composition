@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import ru.kotofeya.composition.R
 import ru.kotofeya.composition.databinding.FragmentChooseLevelBinding
 import ru.kotofeya.composition.domain.entity.Level
+import ru.kotofeya.composition.presentation.GameFragment.Companion.KEY_LEVEL
 
 class ChooseLevelFragment : Fragment() {
 
@@ -42,11 +44,8 @@ class ChooseLevelFragment : Fragment() {
     }
 
     private fun launchGameFragment(level: Level){
-        requireActivity().supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.main_container,  GameFragment.newInstanse(level))
-            .addToBackStack(GameFragment.NAME)
-            .commit()
+        findNavController().navigate(ChooseLevelFragmentDirections
+            .actionChooseLevelFragmentToGameFragment(level))
     }
 
     override fun onDestroyView() {
@@ -54,10 +53,4 @@ class ChooseLevelFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
-        const val NAME = "ChooseLevelFragment"
-        fun newInstance(): ChooseLevelFragment{
-            return ChooseLevelFragment()
-        }
-    }
 }
